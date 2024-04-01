@@ -3,15 +3,9 @@ import sys
 from PyQt6.QtWidgets import (
     QApplication,
     QCheckBox,
-    QComboBox,
-    QDoubleSpinBox,
-    QFontComboBox,
     QLabel,
-    QLCDNumber,
     QMainWindow,
     QPushButton,
-    QSpinBox,
-    QTimeEdit,
     QVBoxLayout,
     QWidget,
 )
@@ -22,19 +16,15 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Widgets App")
+        self.setWindowTitle("MTG Commander Finder")
+        self.setContentsMargins(10, 10, 10, 10)
+        self.resize(480, 640)
 
         layout = QVBoxLayout()
         widgets = [
             QCheckBox,
-            QComboBox,
-            QDoubleSpinBox,
-            QFontComboBox,
-            QLCDNumber,
             QLabel,
             QPushButton,
-            QSpinBox,
-            QTimeEdit,
         ]
 
         for w in widgets:
@@ -49,6 +39,7 @@ class MainWindow(QMainWindow):
 
 
 app = QApplication(sys.argv)
+app.setStyle("Fusion")
 window = MainWindow()
 window.show()
 

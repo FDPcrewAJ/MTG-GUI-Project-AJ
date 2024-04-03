@@ -1,5 +1,6 @@
 import sys
 
+from PyQt6.QtGui import QFont
 from PyQt6.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -61,6 +62,7 @@ class MainWindow(QMainWindow):
 
 app = QApplication(sys.argv)
 app.setStyle("Fusion")
+app.setFont(QFont("Calibri", 10))
 window = MainWindow()
 window.show()
 

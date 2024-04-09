@@ -1,6 +1,7 @@
 import sys
 
 from PyQt6.QtGui import QFontDatabase, QFont
+from PyQt6.QtWidgets import QListWidget, QAbstractItemView
 from PyQt6.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -40,9 +41,11 @@ class MainWindow(QMainWindow):
         title_label = QLabel("Magic: The Gathering Commander Finder")
         title_label.setFont(QFont("Fondamento", 20))
         
-        color_selector = QListWidget()
+        color_selector = QListWidget(self)
         color_selector.addItems(["White", "Blue", "Black", "Red", "Green", "Colorless"])
         color_selector.setFont(QFont("Bellefair"))
+        """Selection of multiple items in a list came from https://stackoverflow.com/questions/4008649/qlistwidget-and-multiple-selection"""
+        color_selector.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
         info_text = QLabel("Select which colors you want on your commander, or select none for a completely random card!")
         info_text.setFont(QFont("Bellefair"))
         search_button = QPushButton("Find a Commander!")

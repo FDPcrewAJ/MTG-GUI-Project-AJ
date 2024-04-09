@@ -1,8 +1,9 @@
 import sys
 
 from PyQt6.QtGui import QFontDatabase, QFont
-from PyQt6.QtWidgets import QListWidget, QAbstractItemView
+import PyQt6.QtCore
 from PyQt6.QtWidgets import (
+    QAbstractItemView,
     QApplication,
     QCheckBox,
     QListWidget,
@@ -40,13 +41,14 @@ class MainWindow(QMainWindow):
         # Assign each widget a variable
         title_label = QLabel("Magic: The Gathering Commander Finder")
         title_label.setFont(QFont("Fondamento", 20))
+        title_label.setAlignment(PyQt6.QtCore.Qt.AlignmentFlag.AlignCenter)
         
         # Color selection QListWidget setup
         color_selector = QListWidget(self)
         color_selector.addItems(["White", "Blue", "Black", "Red", "Green", "Colorless"])
         color_selector.setFont(QFont("Bellefair", 15))
         color_selector.setSpacing(11)
-        color_selector.setMaximumWidth(500)
+        color_selector.setMaximumWidth(200)
         color_selector.setMinimumWidth(150)
         color_selector.setMaximumHeight(300)
         color_selector.setMinimumHeight(300)
@@ -55,18 +57,20 @@ class MainWindow(QMainWindow):
         color_selector.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
 
         # Info Text QLabel setup
-        info_text = QLabel(f"Select which colors you want on your commander,\nor select none for a completely random card!")
-        info_text.setFont(QFont("Bellefair"))
+        info_text = QLabel(f"Select which colors you\nwant on your commander,\nor select none for a\ncompletely random card!")
+        info_text.setFont(QFont("Bellefair", 20))
+        info_text.setAlignment(PyQt6.QtCore.Qt.AlignmentFlag.AlignCenter)
 
         # Find commander QPushButton setup
         search_button = QPushButton("Find a Commander!")
-        search_button.setFont(QFont("Fondamento"))
+        search_button.setFont(QFont("Fondamento", 25))
 
         # Card found name Qlabel setup
         card_text = "Your Commander is:"
         card_name = "_________"
         card_return = QLabel(f"{card_text} \n {card_name}")
-        card_return.setFont(QFont("Bellefair"))
+        card_return.setFont(QFont("Bellefair", 20))
+        card_return.setAlignment(PyQt6.QtCore.Qt.AlignmentFlag.AlignCenter)
 
         # Add the widget variables to the window
         main_layout.addWidget(title_label)

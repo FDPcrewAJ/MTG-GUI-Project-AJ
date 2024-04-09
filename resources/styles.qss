@@ -13,6 +13,7 @@ QLabel, QListWidget, QPushButton {
 
 QLabel {
     text-align: center;
+    padding: 10px
 }
 
 QListWidget {

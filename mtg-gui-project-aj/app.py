@@ -5,7 +5,6 @@ import PyQt6.QtCore
 from PyQt6.QtWidgets import (
     QAbstractItemView,
     QApplication,
-    QCheckBox,
     QListWidget,
     QLabel,
     QMainWindow,
@@ -57,7 +56,8 @@ class MainWindow(QMainWindow):
         color_selector.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
 
         # Info Text QLabel setup
-        info_text = QLabel(f"Select which colors you\nwant on your commander,\nor select none for a\ncompletely random card!")
+        info_text = QLabel(f"Select which colors you want on your commander, or select none for a completely random card!")
+        info_text.setWordWrap(True)
         info_text.setFont(QFont("Bellefair", 20))
         info_text.setAlignment(PyQt6.QtCore.Qt.AlignmentFlag.AlignCenter)
 

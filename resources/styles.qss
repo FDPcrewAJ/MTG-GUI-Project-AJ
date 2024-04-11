@@ -19,3 +19,8 @@ QLabel {
 QListWidget {
     padding: 10px;
 }
+
+QPushButton {
+    font-weight: bold;
+    text-decoration: underline;
+}

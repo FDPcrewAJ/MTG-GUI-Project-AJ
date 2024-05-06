@@ -1,3 +1,4 @@
+import controller
 import sys
 
 from PyQt6.QtGui import QFontDatabase, QFont
@@ -43,17 +44,28 @@ class MainWindow(QMainWindow):
         title_label.setAlignment(PyQt6.QtCore.Qt.AlignmentFlag.AlignCenter)
         
         # Color selection QListWidget setup
-        color_selector = QListWidget(self)
-        color_selector.addItems(["White", "Blue", "Black", "Red", "Green", "Colorless"])
-        color_selector.setFont(QFont("Bellefair", 15))
-        color_selector.setSpacing(11)
-        color_selector.setMaximumWidth(200)
-        color_selector.setMinimumWidth(150)
-        color_selector.setMaximumHeight(300)
-        color_selector.setMinimumHeight(300)
+        self.color_selector = QListWidget(self)
+        c_white = "White"
+        c_blue = "Blue"
+        c_black = "Black"
+        c_red = "Red"
+        c_green = "Green"
+        c_colorless = "Colorless"
+        self.color_selector.addItem(c_white)
+        self.color_selector.addItem(c_blue)
+        self.color_selector.addItem(c_black)
+        self.color_selector.addItem(c_red)
+        self.color_selector.addItem(c_green)
+        self.color_selector.addItem(c_colorless)
+        self.color_selector.setFont(QFont("Bellefair", 15))
+        self.color_selector.setSpacing(11)
+        self.color_selector.setMaximumWidth(200)
+        self.color_selector.setMinimumWidth(150)
+        self.color_selector.setMaximumHeight(300)
+        self.color_selector.setMinimumHeight(300)
         """Selection of multiple items in a list came from 
         https://stackoverflow.com/questions/4008649/qlistwidget-and-multiple-selection"""
-        color_selector.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
+        self.color_selector.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
 
         # Info Text QLabel setup
         info_text = QLabel(f"Select which colors you want on your commander, or select none for a completely random card! \n*Note: Colorless specifies colorless mana, not generic mana.")
@@ -62,23 +74,24 @@ class MainWindow(QMainWindow):
         info_text.setAlignment(PyQt6.QtCore.Qt.AlignmentFlag.AlignCenter)
 
         # Find commander QPushButton setup
-        search_button = QPushButton("Find a Commander!")
-        search_button.setFont(QFont("Fondamento", 25))
+        self.search_button = QPushButton("Find a Commander!")
+        self.search_button.setFont(QFont("Fondamento", 25))
+        self.search_button.clicked.connect(self.find_user_colors)
 
         # Card found name Qlabel setup
         card_text = "Your Commander is:"
         card_name = "_________"
-        card_return = QLabel(f"{card_text} \n {card_name}")
-        card_return.setFont(QFont("Bellefair", 20))
-        card_return.setAlignment(PyQt6.QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.card_return = QLabel(f"{card_text} \n {card_name}")
+        self.card_return.setFont(QFont("Bellefair", 20))
+        self.card_return.setAlignment(PyQt6.QtCore.Qt.AlignmentFlag.AlignCenter)
 
         # Add the widget variables to the window
         main_layout.addWidget(title_label)
         main_layout.addLayout(selector_layout)
-        selector_layout.addWidget(color_selector)
+        selector_layout.addWidget(self.color_selector)
         selector_layout.addWidget(info_text)
-        main_layout.addWidget(search_button)
-        main_layout.addWidget(card_return)
+        main_layout.addWidget(self.search_button)
+        main_layout.addWidget(self.card_return)
     
 
         
@@ -90,6 +103,16 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(widget)
 
     
+    def find_user_colors(self):
+        # get color inputs from the list widget
+        selected_colors = self.color_selector.selectedItems()
+        # Call find card function from controller
+        print(selected_colors)
+        # format results using controller
+
+        # display results
+
+
     def set_fonts(self, font_name: str) -> None:
         font_dir = "resources/"
         font_path = font_dir + font_name

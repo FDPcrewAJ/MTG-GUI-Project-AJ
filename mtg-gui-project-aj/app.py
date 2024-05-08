@@ -105,7 +105,10 @@ class MainWindow(QMainWindow):
     
     def find_user_colors(self):
         # get color inputs from the list widget
-        selected_colors = self.color_selector.selectedItems()
+        selected_colors = []
+        items = self.color_selector.selectedItems()
+        for item in range(len(items)):
+            selected_colors.append(str(self.color_selector.selectedItems()[item].text()))
         # Call find card function from controller
         print(selected_colors)
         # format results using controller

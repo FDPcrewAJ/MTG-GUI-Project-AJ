@@ -1,5 +1,6 @@
 import controller
 import sys
+import requests
 
 from PyQt6.QtGui import QFontDatabase, QFont
 import PyQt6.QtCore
@@ -109,11 +110,8 @@ class MainWindow(QMainWindow):
         items = self.color_selector.selectedItems()
         for item in range(len(items)):
             selected_colors.append(str(self.color_selector.selectedItems()[item].text()))
-        # Call find card function from controller
-        print(selected_colors)
-        # format results using controller
-
-        # display results
+        
+        selected_card = controller.get_colors(selected_colors)
 
 
     def set_fonts(self, font_name: str) -> None:

@@ -15,6 +15,8 @@ def get_colors(selected_colors):
     for item in selected_colors:
         if item == "White":
             c_w = "+c%3Awhite"
+        else:
+            c_w = "-m:w"
         if item == "Blue":
             c_u = "+c%3Ablue"
         if item == "Black":

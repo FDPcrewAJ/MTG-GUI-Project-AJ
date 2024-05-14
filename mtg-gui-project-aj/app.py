@@ -51,15 +51,15 @@ class MainWindow(QMainWindow):
         c_black = "Black"
         c_red = "Red"
         c_green = "Green"
-        c_colorless = "Colorless"
+        #c_colorless = "Colorless"
         self.color_selector.addItem(c_white)
         self.color_selector.addItem(c_blue)
         self.color_selector.addItem(c_black)
         self.color_selector.addItem(c_red)
         self.color_selector.addItem(c_green)
-        self.color_selector.addItem(c_colorless)
+        #self.color_selector.addItem(c_colorless)
         self.color_selector.setFont(QFont("Bellefair", 15))
-        self.color_selector.setSpacing(11)
+        self.color_selector.setSpacing(15)
         self.color_selector.setMaximumWidth(200)
         self.color_selector.setMinimumWidth(150)
         self.color_selector.setMaximumHeight(300)
@@ -69,9 +69,9 @@ class MainWindow(QMainWindow):
         self.color_selector.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
 
         # Info Text QLabel setup
-        info_text = QLabel(f"Select which colors you want on your commander, or select none for a completely random card! \n*Note: Colorless specifies colorless mana, not generic mana.")
+        info_text = QLabel(f"Select which colors you want on your commander, or select none for a completely random card!")
         info_text.setWordWrap(True)
-        info_text.setFont(QFont("Bellefair", 20))
+        info_text.setFont(QFont("Bellefair", 25))
         info_text.setAlignment(PyQt6.QtCore.Qt.AlignmentFlag.AlignCenter)
 
         # Find commander QPushButton setup
@@ -112,6 +112,7 @@ class MainWindow(QMainWindow):
             selected_colors.append(str(self.color_selector.selectedItems()[item].text()))
         
         selected_card = controller.get_colors(selected_colors)
+        print(selected_card)
 
 
     def set_fonts(self, font_name: str) -> None:

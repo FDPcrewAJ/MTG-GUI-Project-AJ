@@ -80,9 +80,9 @@ class MainWindow(QMainWindow):
         self.search_button.clicked.connect(self.find_user_colors)
 
         # Card found name Qlabel setup
-        card_text = "Your Commander is:"
-        card_name = "_________"
-        self.card_return = QLabel(f"{card_text} \n {card_name}")
+        self.sel_card_indicator = "Your Commander is:"
+        self.card_name = "_____________"
+        self.card_return = QLabel(f"{self.sel_card_indicator} \n {self.card_name}")
         self.card_return.setFont(QFont("Bellefair", 20))
         self.card_return.setAlignment(PyQt6.QtCore.Qt.AlignmentFlag.AlignCenter)
 
@@ -112,8 +112,10 @@ class MainWindow(QMainWindow):
             selected_colors.append(str(self.color_selector.selectedItems()[item].text()))
         
         selected_card = controller.get_colors(selected_colors)
-        print(selected_card)
+        card_name = controller.make_call(selected_card)
+        self.card_return.setText(f"{self.sel_card_indicator} \n {card_name}" )
 
+        
 
     def set_fonts(self, font_name: str) -> None:
         font_dir = "resources/"

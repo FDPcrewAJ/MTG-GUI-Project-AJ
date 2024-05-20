@@ -29,10 +29,14 @@ def get_colors(selected_colors):
             c_g = "g"
     
     search_colors = c_w + c_u + c_b + c_r + c_g
-    make_call(search_colors)
+    if search_colors == "":
+        print(type(search_colors))
+    
+    return search_colors
 
-def make_call(search_colors):
+def make_call(search_colors) -> str:
     base_url = "https://api.scryfall.com/cards/random?q=is%3Acommander+color%3D"
     full_url = base_url + search_colors
     response = requests.get(full_url).json()
-    print(response)
+    card_name = response['name']
+    return card_name

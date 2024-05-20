@@ -4,6 +4,7 @@ by Aiden Jungels
 
 """
 import requests
+import random
 
 # Get the colors selected by the user.
 def get_colors(selected_colors):
@@ -30,7 +31,9 @@ def get_colors(selected_colors):
     
     search_colors = c_w + c_u + c_b + c_r + c_g
     if search_colors == "":
-        print(type(search_colors))
+        possible_colors = ["w", "u", "b", "r", "g"]
+        search_colors = random.choices(possible_colors)
+        print(search_colors)
     
     return search_colors
 

@@ -1,6 +1,5 @@
 import controller
 import sys
-import requests
 
 from PyQt6.QtGui import QFontDatabase, QFont
 import PyQt6.QtCore
@@ -83,6 +82,7 @@ class MainWindow(QMainWindow):
         self.sel_card_indicator = "Your Commander is:"
         self.card_name = "_____________"
         self.card_return = QLabel(f"{self.sel_card_indicator} \n {self.card_name}")
+        self.card_return.setWordWrap(True)
         self.card_return.setFont(QFont("Bellefair", 20))
         self.card_return.setAlignment(PyQt6.QtCore.Qt.AlignmentFlag.AlignCenter)
 
